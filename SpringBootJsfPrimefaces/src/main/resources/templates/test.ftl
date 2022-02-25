@@ -13,7 +13,7 @@
 	<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
 	 <tr>
 	  <td align="center" bgcolor="#ffffff" style="padding: 40px 0 30px 0;">
-	   <img src="cid:header.jpeg" alt="TEST" style="display: block;" />
+	   <img src="cid:header.png" alt="TEST" style="display: block;" />
 	  </td>
 	 </tr>
 	 <tr>

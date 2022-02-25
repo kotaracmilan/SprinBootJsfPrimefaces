@@ -28,7 +28,7 @@ public class MailHandler {
 	private FreeMarkerConfigurer freemarkerConfigurer;
 
 	
-	@Value("classpath:/images/header.jpeg")
+	@Value("classpath:/images/header.png")
 	private Resource headerFile;
 	
 	@Value("classpath:/images/logo.png")
@@ -55,8 +55,8 @@ public class MailHandler {
 		//mmh.addBcc();
 		mmh.setText(body, true);
 		mmh.setSubject(subject);
-		mmh.addInline("logo.jpeg", logoFile);
-		mmh.addInline("logo-inv.png", headerFile);
+		mmh.addInline("logo.png", logoFile);
+		mmh.addInline("header.png", headerFile);
 		
 		jms.send(mm);
 	}
@@ -71,11 +71,11 @@ public class MailHandler {
 	 * @param destinationEmail - email address where to send email
 	 * @param subject - email subject
 	 */
-	public <T> void sendMailFromTemplate(String nameOfFreeMarkerTemplateFile, Class<T> model, String destinationEmail, String subject) {
+	public <T> void sendMailFromTemplate(String nameOfFreeMarkerTemplateFile, T model, String destinationEmail, String subject) {
 		Template freemarkerTemplate;
 		try {
 			freemarkerTemplate = freemarkerConfigurer.createConfiguration()
-				      .getTemplate(nameOfFreeMarkerTemplateFile);
+				      .getTemplate(nameOfFreeMarkerTemplateFile+".ftl");
 			String htmlBody = FreeMarkerTemplateUtils.processTemplateIntoString(freemarkerTemplate, (T)model);
 			sendHtmlEmail(destinationEmail, subject, htmlBody );
 		} catch (Exception e) {

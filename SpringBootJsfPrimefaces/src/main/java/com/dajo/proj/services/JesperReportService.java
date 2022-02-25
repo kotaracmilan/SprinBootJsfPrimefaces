@@ -39,7 +39,7 @@ public class JesperReportService {
 	}
 
 
-	public String exportReport(FileType fileType, List<Object> data, String reportName) throws FileNotFoundException, JRException {
+	public void exportReport(FileType fileType, List<Object> data, String reportName) throws FileNotFoundException, JRException {
 		File file = ResourceUtils.getFile("classpath:/jasper_report/"+reportName);
 		JasperReport report = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data);
@@ -47,7 +47,7 @@ public class JesperReportService {
 		JasperExportManager.exportReportToPdf(jp);
 	}
 
-	private void exportToPdf(JasperPrint jasperPrint) {
+	private void exportToPdf(JasperPrint jasperPrint) throws JRException {
 		JasperExportManager.exportReportToHtmlFile(null);
 	}
 
