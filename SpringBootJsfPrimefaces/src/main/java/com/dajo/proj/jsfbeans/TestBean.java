@@ -1,19 +1,26 @@
 package com.dajo.proj.jsfbeans;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.annotation.ApplicationScope;
 
+import com.dajo.proj.model.FileType;
 import com.dajo.proj.model.Product;
+import com.dajo.proj.services.JesperReportService;
 import com.dajo.proj.services.MailHandler;
 import com.dajo.proj.services.TestService;
 
 import lombok.extern.slf4j.Slf4j;
+import net.sf.jasperreports.engine.JRException;
 
 @Slf4j
 @Named("testBean")
@@ -27,6 +34,8 @@ public class TestBean {
     private TestService service;
 	@Autowired
 	private MailHandler mailHandler;
+	@Autowired
+	private JesperReportService jesperReportService;
 	
 	@PostConstruct
 	public void init() {
@@ -49,6 +58,8 @@ public class TestBean {
 			System.out.println("Exception:" + e.getMessage());
 		}
 	}
+	
+	
 
     public List<Product> getProducts() {
     	return products;
