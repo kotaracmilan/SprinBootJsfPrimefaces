@@ -13,8 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = {
-		DataSourceAutoConfiguration.class,
-		SecurityAutoConfiguration.class
+		DataSourceAutoConfiguration.class
 })
 @ServletComponentScan
 @ComponentScan
