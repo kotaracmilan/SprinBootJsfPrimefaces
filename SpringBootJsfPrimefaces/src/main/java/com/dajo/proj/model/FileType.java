@@ -1,5 +1,7 @@
 package com.dajo.proj.model;
 
 public enum FileType {
-	HTML, PDF, CSV, XLS;
+	HTML, PDF, CSV, XLSX, XML;
+		
+	
 }
